@@ -1,0 +1,39 @@
+[
+  {
+    "depart": "Calidad",
+    "values": [
+      {
+        "task": "Revisar y escanear certifiacos",
+        "details": "genérica, a no ser que estén centrados en Arpa, WG, etc."
+      },
+      {
+        "task": "Correo",
+        "details": "genérica, pero seguramente estará centrado en 4 clientes"
+      },
+      {
+        "task": "Inspección de prototipos",
+        "details": "poner los clientes"
+      },
+      {
+        "task": "Inspección de piezas de serie",
+        "details": "WG y Arpa"
+      },
+      {
+        "task": "Hacer documentacion",
+        "details": "del cliente X"
+      },
+      {
+        "task": "Inspección de Compras",
+        "details": "para el cliente X"
+      },
+      {
+        "task": "Ronda de Inspección",
+        "details": "genérica"
+      },
+      {
+        "task": "Líquidos penetrantes",
+        "details": "cliente X"
+      }
+    ]
+  }
+]

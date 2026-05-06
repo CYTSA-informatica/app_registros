@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=mysql+pymysql://app_user:app_pass@db:3306/app_db
+    depends_on:
+      - db
+
+  db:
+    build:
+      context: ./db
+    environment:
+      - MARIADB_DATABASE=registros_tareas
+      - MARIADB_USER=app_user
+      - MARIADB_PASSWORD=app_pass
+      - MARIADB_ROOT_PASSWORD=root_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:

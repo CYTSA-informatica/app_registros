@@ -1,0 +1,75 @@
+.estado-chip{
+  display:inline-flex;
+  align-items:center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+}
+
+.estado-pendiente{ color:#ef4444; }
+.estado-en_progreso{ color:#f59e0b; }
+.estado-completada{ color:#16a34a; }
+
+.table-empty{
+  padding: 16px;
+  color: var(--muted);
+}
+
+.delete-btn--spaced{
+  margin-top: 8px;
+}
+
+/* ===== ClienteCombo más sutil (sin botón azul) ===== */
+.cliente-combo--subtle .cliente-combo-row{
+  position: relative;
+}
+
+.cliente-combo--subtle .cliente-combo-input{
+  padding-right: 40px; /* espacio para el caret */
+}
+
+.cliente-combo--subtle .cliente-combo-caret{
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: .55;
+  font-weight: 900;
+  cursor: pointer;
+  user-select: none;
+}
+
+.cliente-combo--subtle .cliente-combo-caret:hover{
+  opacity: .8;
+}
+
+.loading-screen{
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.loader{
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  border: 4px solid rgba(37, 99, 235, 0.2);
+  border-top-color: var(--primary);
+  animation: spin 0.9s linear infinite;
+}
+
+.loading-text{
+  margin: 0;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

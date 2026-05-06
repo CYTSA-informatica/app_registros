@@ -1,0 +1,1100 @@
+/* ===========================
+   THEME (blanco + azules)
+   =========================== */
+:root{
+  --bg: #f7faff;
+  --surface: #ffffff;
+  --surface-2: #f3f7ff;
+
+  --text: #0b1220;
+  --muted: #4b5b7a;
+
+  --border: rgba(18, 65, 145, 0.16);
+
+  --primary: #2563eb;
+  --primary-2: #1d4ed8;
+  --accent: #60a5fa;
+  --ring: rgba(37, 99, 235, 0.25);
+
+  --success: #16a34a;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+
+  --shadow-sm: 0 1px 2px rgba(2, 20, 56, .06);
+  --shadow-md: 0 8px 24px rgba(2, 20, 56, .10);
+  --shadow-lg: 0 18px 50px rgba(2, 20, 56, .14);
+
+  --radius: 14px;
+  --radius-sm: 10px;
+
+  --gap: clamp(10px, 2vw, 18px);
+
+  /* ✅ ancho del panel derecho (form) */
+  --right-form-width: 560px; /* sube/baja: 520-620 */
+}
+
+/* Reset básico y base tipográfica */
+*{ box-sizing:border-box; }
+html, body { height:100%; }
+body{
+  margin:0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(900px 350px at 10% -5%, rgba(96,165,250,.35), transparent 60%),
+    radial-gradient(900px 350px at 90% 0%, rgba(37,99,235,.18), transparent 60%),
+    radial-gradient(700px 300px at 50% 110%, rgba(96,165,250,.18), transparent 60%),
+    var(--bg);
+}
+
+/* Enlaces/botones accesibles */
+a{ color:var(--primary); text-decoration:none; }
+a:hover{ text-decoration:underline; }
+:focus-visible{
+  outline:none;
+  box-shadow: 0 0 0 4px var(--ring);
+  border-radius: 10px;
+}
+
+/* ===========================
+   LAYOUT GENERAL
+   =========================== */
+.page-container{
+  width: min(1180px, 92vw);
+  margin: clamp(12px, 3vw, 28px) auto;
+}
+
+.dashboard-main{
+  width: min(1180px, 92vw);
+  margin: 0 auto;
+  padding: clamp(10px, 2.5vw, 18px);
+}
+
+/* ===========================
+   LOGIN
+   =========================== */
+.login-page{
+  min-height: 100vh;
+  display:grid;
+  place-items:center;
+  padding: clamp(12px, 3vw, 24px);
+}
+
+.login-form{
+  width: min(420px, 92vw);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  padding: clamp(16px, 3vw, 22px);
+  display:flex;
+  flex-direction:column;
+  gap: 12px;
+  position: relative;
+  overflow:hidden;
+}
+
+.login-form::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  background: radial-gradient(500px 180px at 30% 0%, rgba(37,99,235,.16), transparent 60%);
+  pointer-events:none;
+}
+
+.login-form h2{
+  margin:0 0 6px;
+  font-size: 1.45rem;
+  letter-spacing:-0.02em;
+  position:relative;
+}
+
+.login-form input{
+  width:100%;
+  padding: 12px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface-2);
+  color: var(--text);
+  box-shadow: var(--shadow-sm);
+  transition: transform .08s ease, box-shadow .15s ease, border-color .15s ease;
+  position:relative;
+}
+
+.login-form input:focus{
+  border-color: rgba(37,99,235,.45);
+  box-shadow: 0 0 0 4px var(--ring), var(--shadow-sm);
+  background: #fff;
+}
+
+.login-form button{
+  width:100%;
+  padding: 12px 14px;
+  border: 1px solid rgba(37,99,235,.25);
+  background: linear-gradient(180deg, #2f73ff, var(--primary));
+  color:#fff;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor:pointer;
+  box-shadow: 0 10px 22px rgba(37,99,235,.22);
+  transition: transform .08s ease, box-shadow .15s ease, filter .15s ease;
+}
+
+.login-form button:hover{
+  filter: brightness(1.03);
+  box-shadow: 0 14px 30px rgba(37,99,235,.26);
+}
+.login-form button:active{ transform: translateY(1px); }
+
+.login-form > div{
+  color: var(--danger);
+  background: rgba(239,68,68,.08);
+  border: 1px solid rgba(239,68,68,.18);
+  padding: 10px 12px;
+  border-radius: 12px;
+}
+
+/* ===========================
+   HEADER DASHBOARD
+   =========================== */
+.dashboard-header{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
+  background: rgba(255,255,255,.82);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(18, 65, 145, 0.12);
+  box-shadow: 0 8px 24px rgba(2, 20, 56, .08);
+
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  padding: 10px clamp(12px, 3vw, 22px);
+  flex-wrap: wrap;
+}
+
+.dashboard-header > span:first-child{
+  font-weight: 800;
+  letter-spacing:-0.02em;
+  color: var(--text);
+  margin-right: 6px;
+}
+
+.dashboard-header button{
+  border: 1px solid rgba(37,99,235,.20);
+  background: rgba(37,99,235,.08);
+  color: var(--primary-2);
+  padding: 9px 12px;
+  border-radius: 999px;
+  cursor:pointer;
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+  transition: transform .08s ease, background .15s ease, box-shadow .15s ease;
+}
+
+.dashboard-header button:hover{
+  background: rgba(37,99,235,.12);
+  box-shadow: var(--shadow-md);
+}
+.dashboard-header button:active{ transform: translateY(1px); }
+
+.logout-btn{
+  margin-left: auto;
+  background: rgba(239,68,68,.10) !important;
+  color: #b91c1c !important;
+  border-color: rgba(239,68,68,.18) !important;
+}
+
+@media (max-width: 720px){
+  .logout-btn{ margin-left: 0; }
+}
+
+/* ===========================
+   CONTENEDORES: TABLA + FORM
+   =========================== */
+.table-container{
+  display:grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: var(--gap);
+  align-items:start;
+  width: 100%;
+}
+
+@media (max-width: 980px){
+  .table-container{ grid-template-columns: 1fr; }
+}
+
+/* ===========================
+   LAYOUT: tabla y form lado a lado (✅ form más ancho)
+   =========================== */
+.table-form-layout{
+  display:flex;
+  gap: 2.5rem;
+  align-items:flex-start;
+}
+
+/* izquierda (tabla + filtros) */
+.table-form-layout > div:first-child{
+  flex: 1 1 auto;
+  min-width: 620px;
+}
+
+/* derecha (form) */
+.table-form-layout > div:last-child{
+  flex: 0 0 var(--right-form-width);
+  width: var(--right-form-width);
+}
+
+/* Responsive */
+@media (max-width: 980px){
+  .table-form-layout{
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .table-form-layout > div:first-child{ min-width: 0; }
+  .table-form-layout > div:last-child{
+    width: 100%;
+    flex-basis: auto;
+  }
+}
+
+/* ===========================
+   FILTER BAR (clientes/empleados)
+   =========================== */
+.filter-bar{
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  padding: 12px;
+  margin-bottom: 12px;
+
+  display:flex;
+  gap: 12px;
+  align-items:end;
+  flex-wrap: wrap;
+}
+
+.filter-bar label{
+  display:flex;
+  flex-direction:column;
+  gap: 6px;
+  font-weight: 700;
+  color: var(--muted);
+  font-size: .92rem;
+}
+
+.filter-bar input{
+  width: min(320px, 82vw);
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface-2);
+  box-shadow: var(--shadow-sm);
+}
+
+.filter-bar button{
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(37,99,235,.22);
+  background: linear-gradient(180deg, rgba(37,99,235,.10), rgba(37,99,235,.06));
+  color: var(--primary-2);
+  font-weight: 800;
+  cursor:pointer;
+  box-shadow: var(--shadow-sm);
+}
+
+.filter-bar button:hover{ box-shadow: var(--shadow-md); }
+
+/* ===========================
+   FORM CONTAINER
+   =========================== */
+.form-container{
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  padding: clamp(14px, 2.5vw, 18px);
+  width: 100%;
+}
+
+.form-container h2,
+.form-container h3{
+  margin: 0 0 10px;
+  letter-spacing:-0.02em;
+}
+
+.form-container label{
+  display:flex;
+  flex-direction:column;
+  gap: 6px;
+  margin: 10px 0;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: .92rem;
+}
+
+.form-container input,
+.form-container select,
+.form-container textarea{
+  width:100%;
+  padding: 11px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface-2);
+  color: var(--text);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow .15s ease, border-color .15s ease, background .15s ease;
+}
+
+.form-container textarea{
+  min-height: 96px;
+  resize: vertical;
+}
+
+.form-container input:focus,
+.form-container select:focus,
+.form-container textarea:focus{
+  border-color: rgba(37,99,235,.45);
+  box-shadow: 0 0 0 4px var(--ring), var(--shadow-sm);
+  background: #fff;
+}
+
+.form-container button{
+  width: 100%;
+  padding: 12px 14px;
+  margin-top: 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(37,99,235,.25);
+  background: linear-gradient(180deg, #2f73ff, var(--primary));
+  color:#fff;
+  font-weight: 800;
+  cursor:pointer;
+  box-shadow: 0 10px 22px rgba(37,99,235,.18);
+  transition: transform .08s ease, box-shadow .15s ease, filter .15s ease, opacity .15s ease;
+}
+
+.form-container button:hover{ box-shadow: 0 14px 30px rgba(37,99,235,.22); }
+.form-container button:active{ transform: translateY(1px); }
+.form-container button:disabled{
+  opacity: .55;
+  cursor:not-allowed;
+  box-shadow: none;
+}
+
+/* Mensajes */
+.success-message{
+  margin-top: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  color: #fff;
+  background: #22c55e;
+  border: 2px solid #16a34a;
+  font-weight: 900;
+  font-size: 1.05rem;
+  box-shadow: 0 2px 12px rgba(22,163,74,.18);
+}
+.error-message{
+  margin-top: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  color: #fff;
+  background: #ef4444;
+  border: 2px solid #b91c1c;
+  font-weight: 900;
+  font-size: 1.05rem;
+  box-shadow: 0 2px 12px rgba(239,68,68,.18);
+}
+
+/* ===========================
+   TABLE base (genérica)
+   - NO sticky aquí (para no pelear con .table-scroll)
+   =========================== */
+table{
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+thead th{
+  text-align:left;
+  font-size: .9rem;
+  color: var(--muted);
+  padding: 12px 12px;
+  background: linear-gradient(180deg, rgba(37,99,235,.08), rgba(37,99,235,.03));
+  border-bottom: 1px solid rgba(18, 65, 145, 0.10);
+}
+
+tbody td{
+  padding: 12px;
+  border-bottom: 1px solid rgba(18, 65, 145, 0.08);
+  font-size: .95rem;
+  color: var(--text);
+  vertical-align: top;
+}
+
+tbody tr:hover{ background: rgba(37,99,235,.06); }
+
+.selected-row{
+  background: rgba(37,99,235,.12) !important;
+  outline: 2px solid rgba(37,99,235,.25);
+}
+
+tbody tr:last-child td{ border-bottom: none; }
+
+/* ===========================
+   PRETTY TABLE (principal)
+   =========================== */
+.table-scroll{
+  max-height: calc(100vh - 260px);
+  overflow: auto;
+  border-radius: var(--radius);
+}
+
+/* importante: sin margin-top */
+.pretty-table{
+  background: #eaf1fb;
+  border: 2px solid var(--primary-2);
+  box-shadow: 0 8px 32px rgba(37,99,235,.13);
+  margin-top: 0;
+}
+
+/* ✅ sticky header correcto dentro del scroll */
+.table-scroll .pretty-table thead th{
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  color: #fff;
+  font-size: 1.05rem;
+  padding: 18px 16px 14px 16px;
+  background: linear-gradient(180deg, var(--primary-2) 80%, #2563eb 100%);
+  border-bottom: 2px solid var(--primary-2);
+  box-shadow: 0 2px 8px rgba(37,99,235,.10);
+}
+
+.pretty-table tbody tr{ transition: background 0.18s; }
+.pretty-table tbody tr:nth-child(even){ background: #dbeafe; }
+.pretty-table tbody tr:hover{ background: #2563eb22; }
+.pretty-table td{
+  padding: 15px 16px;
+  border-bottom: 1px solid #2563eb22;
+  font-size: 1.04rem;
+  color: #0b1220;
+}
+
+.pretty-table tbody tr:last-child td{ border-bottom: none; }
+
+.pretty-table .selected-row{
+  background: #2563eb33 !important;
+  outline: 2px solid var(--primary-2);
+}
+
+.pretty-table .delete-btn{
+  background: linear-gradient(180deg, #ef4444, #b91c1c);
+  color: #fff;
+  border: none;
+  padding: 0.4em 1em;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(239,68,68,.10);
+  transition: filter .12s, box-shadow .12s;
+}
+.pretty-table .delete-btn:hover{
+  filter: brightness(1.08);
+  box-shadow: 0 4px 16px rgba(239,68,68,.16);
+}
+
+/* En móvil: scroll horizontal suave */
+@media (max-width: 720px){
+  table{
+    display:block;
+    overflow-x:auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .table-scroll{ max-height: none; }
+}
+
+/* ===========================
+   TOGGLE (admin)
+   =========================== */
+.toggle-row{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid rgba(37,99,235,.14);
+  background: rgba(37,99,235,.05);
+  border-radius: 14px;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+
+.toggle-label{
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.toggle{
+  position: relative;
+  width: 52px;
+  height: 30px;
+  display:inline-block;
+}
+
+.toggle input{
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-track{
+  position:absolute;
+  inset:0;
+  background: rgba(37,99,235,.18);
+  border: 1px solid rgba(37,99,235,.24);
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,.35), var(--shadow-sm);
+  transition: background .2s ease, border-color .2s ease;
+}
+
+.toggle-track::after{
+  content:"";
+  position:absolute;
+  top: 50%;
+  left: 4px;
+  width: 22px;
+  height: 22px;
+  transform: translateY(-50%);
+  background: #fff;
+  border-radius: 999px;
+  box-shadow: 0 8px 20px rgba(2,20,56,.18);
+  transition: transform .2s ease;
+}
+
+.toggle input:checked + .toggle-track{
+  background: rgba(37,99,235,.35);
+  border-color: rgba(37,99,235,.40);
+}
+.toggle input:checked + .toggle-track::after{
+  transform: translate(22px, -50%);
+}
+
+.toggle-badge{
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: .85rem;
+  border: 1px solid rgba(18, 65, 145, 0.14);
+  box-shadow: var(--shadow-sm);
+}
+
+.toggle-badge.on{
+  color: #0b2a6b;
+  background: rgba(37,99,235,.14);
+  border-color: rgba(37,99,235,.24);
+}
+.toggle-badge.off{
+  color: #334155;
+  background: rgba(2,20,56,.06);
+}
+
+/* ===========================
+   MIS REGISTROS: filtros bonitos
+   =========================== */
+.filters-card{
+  background: rgba(255,255,255,.82);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.filters-grid{
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr 1fr;
+  gap: 12px;
+  align-items: end;
+}
+
+@media (max-width: 900px){
+  .filters-grid{ grid-template-columns: 1fr; }
+}
+
+.field{
+  display:flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label{
+  font-weight: 800;
+  font-size: .9rem;
+  color: var(--muted);
+}
+
+.field input,
+.field select{
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface-2);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow .15s ease, border-color .15s ease, background .15s ease, transform .08s ease;
+}
+
+.field input:focus,
+.field select:focus{
+  outline: none;
+  border-color: rgba(37,99,235,.45);
+  box-shadow: 0 0 0 4px var(--ring), var(--shadow-sm);
+  background: #fff;
+}
+
+.input-icon{ position: relative; }
+.input-icon span{
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: .55;
+  pointer-events: none;
+  font-size: 1rem;
+}
+.input-icon input{ padding-left: 36px; }
+
+.filters-actions{
+  display:flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.btn-ghost{
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(37,99,235,.18);
+  background: rgba(37,99,235,.06);
+  color: var(--primary-2);
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+.btn-ghost:hover{ box-shadow: var(--shadow-md); }
+
+/* ===========================
+   ClienteCombo (bonito y consistente)
+   =========================== */
+.cliente-combo{ position: relative; width: 100%; }
+.cliente-combo-row{ display:flex; gap:10px; align-items:center; }
+
+.cliente-combo-input{
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface-2);
+  box-shadow: var(--shadow-sm);
+}
+
+.cliente-combo-btn{
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(37,99,235,.20);
+  background: rgba(37,99,235,.08);
+  color: var(--primary-2);
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+
+.cliente-dropdown{
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  max-height: 220px;
+  overflow:auto;
+  padding: 6px;
+}
+
+.cliente-dropdown-item{
+  width: 100%;
+  text-align: left;
+  padding: 10px 10px;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--text);
+  font-weight: 700;
+}
+.cliente-dropdown-item:hover{ background: rgba(37,99,235,.08); }
+
+.cliente-dropdown-empty{
+  padding: 10px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+/* ===========================
+   SMALL SCREEN POLISH
+   =========================== */
+@media (max-width: 520px){
+  .form-container{ padding: 14px; }
+  .filter-bar{ padding: 10px; }
+  .filter-bar input{ width: 100%; }
+  .dashboard-header{
+    padding: 10px 12px;
+    gap: 8px;
+  }
+  .dashboard-header button{
+    flex: 1 1 auto;
+    text-align: center;
+  }
+}
+/* ===========================
+   LAYOUT BASE (para Clientes/Empleados): equilibrado
+   =========================== */
+.table-form-layout{
+  display:flex;
+  gap: 2.5rem;
+  align-items:flex-start;
+}
+
+/* por defecto: 2 columnas equilibradas */
+.table-form-layout > div:first-child{
+  flex: 1 1 58%;
+  min-width: 520px;
+}
+.table-form-layout > div:last-child{
+  flex: 1 1 42%;
+  min-width: 420px;
+  width: auto;
+}
+
+/* ===========================
+   SOLO MisRegistros: tabla más pequeña + form más ancho
+   =========================== */
+.registros-layout > div:first-child{
+  flex: 1 1 52%;      /* tabla/filtros más “pequeños” */
+  min-width: 520px;
+}
+.registros-layout > div:last-child{
+  flex: 0 0 560px;    /* form ancho fijo */
+  width: 560px;
+}
+
+/* Si quieres la tabla aún más pequeña, baja el 52% a 48% */
+
+/* Responsive */
+@media (max-width: 980px){
+  .table-form-layout{
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .table-form-layout > div:first-child,
+  .table-form-layout > div:last-child{
+    min-width: 0;
+    width: 100%;
+    flex: 1 1 auto;
+  }
+}
+
+/* =========================================================
+   1) CLIENTES + EMPLEADOS: formulario derecho más ancho
+   (usan .table-container -> grid)
+   ========================================================= */
+.table-container{
+  /* izquierda flexible, derecha fija y ancha */
+  grid-template-columns: minmax(0, 1fr) minmax(520px, 620px);
+}
+
+/* responsive */
+@media (max-width: 980px){
+  .table-container{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   2) MIS REGISTROS: SIN SCROLL HORIZONTAL y tabla más compacta
+   Recomendado: añade class "registros-layout" al wrapper:
+   <div className="table-form-layout registros-layout">
+   ========================================================= */
+
+/* que la tabla no “saque” overflow-x */
+.registros-layout .table-scroll{
+  overflow-x: hidden;          /* ✅ adiós scroll horizontal */
+  max-height: 520px;           /* ✅ más bajita (como las otras) */
+}
+
+/* que la tabla se adapte al ancho disponible */
+.registros-layout .pretty-table{
+  width: 100%;
+  table-layout: fixed;         /* ✅ clave para evitar desbordes */
+}
+
+/* permitir que el contenido haga wrap y no fuerce ancho */
+/* Columnas con ancho fijo y texto truncado */
+.registros-layout .pretty-table th,
+.registros-layout .pretty-table td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* columnas más “controladas” (ajusta si quieres) */
+
+/* Todas las columnas de la tabla con el mismo ancho */
+/* Ajusta el ancho de cada columna para mejor visualización */
+.registros-layout .pretty-table th:nth-child(1),
+.registros-layout .pretty-table td:nth-child(1) { width: 22%; }
+.registros-layout .pretty-table th:nth-child(2),
+.registros-layout .pretty-table td:nth-child(2) { width: 10%; }
+.registros-layout .pretty-table th:nth-child(3),
+.registros-layout .pretty-table td:nth-child(3) { width: 12%; }
+.registros-layout .pretty-table th:nth-child(4),
+.registros-layout .pretty-table td:nth-child(4) { width: 14%; }
+.registros-layout .pretty-table th:nth-child(5),
+.registros-layout .pretty-table td:nth-child(5) { width: 14%; }
+.registros-layout .pretty-table th:nth-child(6),
+.registros-layout .pretty-table td:nth-child(6) { width: 14%; }
+
+
+/* última columna (Eliminar) sin wrap */
+.registros-layout .pretty-table th:last-child,
+.registros-layout .pretty-table td:last-child {
+  white-space: nowrap;
+}
+
+/* hacer la tabla un pelín más compacta visualmente */
+.registros-layout .pretty-table td{ padding: 12px 14px; font-size: 0.88rem; }
+.registros-layout .pretty-table thead th{ padding: 14px 14px 12px; font-size: 0.88rem; }
+
+/* en móvil: no forzar display:block con overflow-x */
+@media (max-width: 720px){
+  .registros-layout table{
+    display: table;       /* evita el scroll horizontal que metías antes */
+    overflow-x: visible;
+  }
+  .registros-layout .table-scroll{
+    max-height: none;     /* en móvil mejor dejarla crecer */
+  }
+}
+/* ===========================
+   MISREGISTROS: form derecho un poco más pequeño + headers sin romper letras
+   Requiere: <div className="table-form-layout registros-layout">
+   =========================== */
+
+/* 1) reduce un poco el ancho del panel derecho SOLO en MisRegistros */
+.registros-layout > div:last-child{
+  flex: 0 0 300px;   /* 40% más pequeño que 520px */
+  width: 300px;
+}
+
+/* 2) la tabla ocupa más ancho */
+.registros-layout > div:first-child{
+  flex: 1 1 auto;
+  min-width: 560px;
+}
+
+/* 3) sin scroll horizontal */
+.registros-layout .table-scroll{
+  overflow-x: hidden;
+}
+
+/* 4) evita que el THEAD parta palabras (Du rac ió n) */
+.registros-layout .pretty-table{
+  table-layout: fixed;  /* fija el reparto de columnas */
+}
+
+.registros-layout .pretty-table thead th{
+  white-space: nowrap;        /* NO partir palabras */
+  overflow: hidden;
+  text-overflow: ellipsis;    /* si no cabe, ... */
+  font-size: 0.98rem;         /* un pelín más pequeño */
+  padding: 12px 12px 10px;    /* menos padding */
+}
+
+/* 5) en el cuerpo sí permitimos wrap, pero sin romper letra a letra */
+.registros-layout .pretty-table td{
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+/* ===========================
+   FORM: 2 campos en una fila
+   (Nombre 50% + Email 50%)
+   =========================== */
+.form-row-2{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-items: end;
+}
+
+/* En móvil, que apilen */
+@media (max-width: 720px){
+  .form-row-2{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Acciones de form en crear (opcional pero queda mejor) */
+.form-actions{
+  display:flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+.form-actions .btn-primary{ flex: 1 1 auto; }
+/* ✅ Botones Aceptar/Cancelar del mismo tamaño */
+.form-container .form-actions{
+  display:flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* ambos botones iguales */
+.form-container .form-actions .btn-primary,
+.form-container .form-actions .btn-ghost,
+.form-container .form-actions button{
+  flex: 1 1 0 !important;
+  min-width: 0;
+  width: 100% !important;
+  margin-top: 0 !important;       /* pisa el margin-top del button global */
+}
+
+/* =======================================================
+   CLIENTES + EMPLEADOS: form derecho 10% más pequeño
+   ======================================================= */
+
+/* Si ya estabas usando estos valores (340 / 440), esto es -10% */
+:root{
+  --side-form-min: 480px;   /* 340 * 0.9 */
+  --side-form-width: 500px; /* 440 * 0.9 */
+}
+
+.table-container{
+  grid-template-columns: minmax(0, 1fr) minmax(var(--side-form-min), var(--side-form-width));
+}
+
+/* Responsive igual */
+@media (max-width: 980px){
+  .table-container{ grid-template-columns: 1fr; }
+}
+
+/* =======================================================
+   FIX: Dropdown ClienteCombo dentro de .form-container
+   (evita que .form-container button pinte en azul los items)
+   ======================================================= */
+
+.form-container .cliente-dropdown .cliente-dropdown-item{
+  width: 100% !important;
+  display: block !important;
+  text-align: left !important;
+
+  /* quitar look de botón azul del form */
+  background: transparent !important;
+  color: var(--text) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+
+  padding: 10px 10px !important;
+  border-radius: 10px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+}
+
+/* hover sutil (como en filtros) */
+.form-container .cliente-dropdown .cliente-dropdown-item:hover{
+  background: rgba(37,99,235,.08) !important;
+}
+
+/* focus accesible */
+.form-container .cliente-dropdown .cliente-dropdown-item:focus-visible{
+  outline: none !important;
+  box-shadow: 0 0 0 4px var(--ring) !important;
+}
+
+/* opcional: asegurar que el panel NO se tiña */
+.form-container .cliente-dropdown{
+  background: var(--surface) !important;
+}
+
+/* 1) Dale prioridad al bloque de filtros (encima de la tabla) */
+.filters-card{
+  position: relative;
+  z-index: 80;
+  overflow: visible; /* por si algún padre lo recorta */
+}
+
+/* 2) Asegura que el dropdown esté aún más arriba */
+.cliente-dropdown{
+  z-index: 120;
+}
+
+/* 3) Baja un poco el z-index del THEAD sticky para que no tape */
+.table-scroll .pretty-table thead th{
+  z-index: 20; /* antes 30 */
+}
+
+/* (Opcional) fuerza que la zona scroll quede por debajo */
+.table-scroll{
+  position: relative;
+  z-index: 1;
+}
+
+/* =======================================================
+   MIS REGISTROS: que el ESTADO se vea completo (sin "...")
+   Ajusta el nth-child si tu columna Estado no es la 3ª
+   ======================================================= */
+
+/* 1) Asegura que la columna Estado no use ellipsis */
+.registros-layout .pretty-table th:nth-child(3),
+.registros-layout .pretty-table td:nth-child(3){
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important; /* sin "..." */
+}
+
+/* 2) Reparte mejor los anchos para darle sitio al Estado
+      (ajusta si tu tabla tiene más/menos columnas) */
+.registros-layout .pretty-table th:nth-child(1),
+.registros-layout .pretty-table td:nth-child(1){ width: 20% !important; } /* descripción u otro campo largo */
+
+.registros-layout .pretty-table th:nth-child(2),
+.registros-layout .pretty-table td:nth-child(2){ width: 10% !important; } /* duración/otro */
+
+.registros-layout .pretty-table th:nth-child(3),
+.registros-layout .pretty-table td:nth-child(3){ width: 16% !important; } /* ✅ ESTADO más ancho */
+
+.registros-layout .pretty-table th:nth-child(4),
+.registros-layout .pretty-table td:nth-child(4){ width: 14% !important; }
+
+.registros-layout .pretty-table th:nth-child(5),
+.registros-layout .pretty-table td:nth-child(5){ width: 14% !important; }
+
+.registros-layout .pretty-table th:nth-child(6),
+.registros-layout .pretty-table td:nth-child(6){ width: 14% !important; }
+
+/* (Opcional) que el estado destaque un poco */
+.registros-layout .pretty-table td:nth-child(3){
+  font-weight: 800;
+}

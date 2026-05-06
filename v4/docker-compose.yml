@@ -1,0 +1,31 @@
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${WEB_PORT:-8081}:80"
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: registros_tareas
+      DB_USER: app_user
+      DB_PASSWORD: app_pass
+    depends_on:
+      - db
+    volumes:
+      - ./app:/var/www/html
+
+  db:
+    build:
+      context: ./db
+    environment:
+      - MARIADB_DATABASE=registros_tareas
+      - MARIADB_USER=app_user
+      - MARIADB_PASSWORD=app_pass
+      - MARIADB_ROOT_PASSWORD=root_pass
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
