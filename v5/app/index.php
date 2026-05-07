@@ -106,6 +106,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         // Para registros: limpiar columnas para Excel prolijo
         if ($tablaNombre === 'registers' && $rows !== []) {
             foreach ($rows as $index => $row) {
+                $rows[$index]['fecha_inicio'] = format_app_date((string) ($row['fecha_inicio'] ?? ''), true);
+                $rows[$index]['fecha_actualizacion'] = format_app_date((string) ($row['fecha_actualizacion'] ?? ''), true);
+
                 // 1. Reemplazar id_empleado con el username y renombrar a "empleado"
                 if (isset($row['empleado_nombre'])) {
                     $rows[$index]['empleado'] = $row['empleado_nombre'];

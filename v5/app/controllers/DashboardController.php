@@ -217,7 +217,7 @@ final class DashboardController
                     'ids_proveedores' => is_array($row['ids_proveedores'] ?? null) ? $row['ids_proveedores'] : [],
                     'id_empleado' => (int) ($row['id_empleado'] ?? $userId),
                     'fecha' => $row['fecha_inicio'] ? date('Y-m-d\TH:i', strtotime($row['fecha_inicio'])) : '',
-                    'fecha_actualizacion' => (string) ($row['fecha_actualizacion'] ?? ''),
+                    'fecha_actualizacion' => format_app_date((string) ($row['fecha_actualizacion'] ?? ''), true),
                 ];
             }
         }

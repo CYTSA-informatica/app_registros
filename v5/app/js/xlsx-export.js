@@ -4,6 +4,15 @@
  */
 
 const XlsxExport = (() => {
+  const getDateStamp = () => {
+    const now = new Date();
+    const day = String(now.getDate()).padStart(2, '0');
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const year = String(now.getFullYear());
+
+    return `${day}-${month}-${year}`;
+  };
+
   /**
    * Export visible table rows to Excel (single sheet with current filters and visible columns)
    * @param {string} buttonSelector - CSS selector for export button
@@ -94,7 +103,7 @@ const XlsxExport = (() => {
         XLSX.utils.book_append_sheet(wb, ws, filename || 'Registros');
 
         // Generate and download
-        const timestamp = new Date().toISOString().split('T')[0];
+        const timestamp = getDateStamp();
         const fullFilename = `${filename}_${timestamp}.xlsx`;
         XLSX.writeFile(wb, fullFilename);
 
@@ -136,7 +145,7 @@ const XlsxExport = (() => {
       addSheet('Proveedor_Registro', data.sheet5);
 
       // Generate and download
-      const timestamp = new Date().toISOString().split('T')[0];
+      const timestamp = getDateStamp();
       const fullFilename = `${filename}_${timestamp}.xlsx`;
       XLSX.writeFile(wb, fullFilename);
 
@@ -230,7 +239,7 @@ const XlsxExport = (() => {
 
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
-    const timestamp = new Date().toISOString().split('T')[0];
+    const timestamp = getDateStamp();
     const fullFilename = `${filename}_${timestamp}.csv`;
 
     link.setAttribute('href', URL.createObjectURL(blob));

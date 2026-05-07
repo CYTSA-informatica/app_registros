@@ -21,4 +21,19 @@ spl_autoload_register(static function (string $className): void {
     }
 });
 
+function format_app_date(?string $value, bool $includeTime = false): string
+{
+    $dateValue = trim((string) $value);
+    if ($dateValue === '') {
+        return '';
+    }
+
+    $timestamp = strtotime($dateValue);
+    if ($timestamp === false) {
+        return $dateValue;
+    }
+
+    return date($includeTime ? 'd-m-Y H:i' : 'd-m-Y', $timestamp);
+}
+
 require_once __DIR__ . '/auth.php';

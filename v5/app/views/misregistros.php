@@ -201,6 +201,11 @@
             <?php
               $clientesTexto = trim((string) ($r['clientes_nombres'] ?? ''));
               $proveedoresTexto = trim((string) ($r['proveedores_nombres'] ?? ''));
+              $fechaInicioRaw = (string) ($r['fecha_inicio'] ?? '');
+              $fechaActualizacionRaw = (string) ($r['fecha_actualizacion'] ?? '');
+              $fechaInicioFiltro = substr($fechaInicioRaw, 0, 10);
+              $fechaInicioVisible = format_app_date($fechaInicioRaw);
+              $fechaActualizacionVisible = format_app_date($fechaActualizacionRaw);
               $clientesLista = implode('|', $splitNames($clientesTexto));
               $proveedoresLista = implode('|', $splitNames($proveedoresTexto));
             ?>
@@ -209,7 +214,7 @@
               data-search="<?= htmlspecialchars(((string) ($r['empleado_nombre'] ?? '')) . ' ' . ((string) ($r['descripcion'] ?? '')) . ' ' . ((string) ($r['notas'] ?? '')), ENT_QUOTES, 'UTF-8') ?>"
               data-estado="<?= htmlspecialchars((string) ($r['estado'] ?? ''), ENT_QUOTES, 'UTF-8') ?>"
               data-duracion="<?= (int) ($r['duracion'] ?? 0) ?>"
-               data-fecha="<?= htmlspecialchars(substr((string) ($r['fecha_inicio'] ?? ''), 0, 10), ENT_QUOTES, 'UTF-8') ?>"
+               data-fecha="<?= htmlspecialchars($fechaInicioFiltro, ENT_QUOTES, 'UTF-8') ?>"
               data-dpto="<?= htmlspecialchars((string) ($r['empleado_dpto'] ?? ''), ENT_QUOTES, 'UTF-8') ?>"
               data-clientes="<?= htmlspecialchars($clientesLista, ENT_QUOTES, 'UTF-8') ?>"
               data-proveedores="<?= htmlspecialchars($proveedoresLista, ENT_QUOTES, 'UTF-8') ?>"
@@ -242,8 +247,8 @@
                 ?>
                 <td><span class="badge <?= $estadoBadgeClass ?>"><?= htmlspecialchars($estado, ENT_QUOTES, 'UTF-8') ?></span></td>
                 <td class="d-none-mobile" title="<?= htmlspecialchars((string) $r['descripcion'], ENT_QUOTES, 'UTF-8') ?>"><small><?= substr(htmlspecialchars((string) $r['descripcion'], ENT_QUOTES, 'UTF-8'), 0, 55) ?></small></td>
-                <td class="d-none-mobile"><small><?= htmlspecialchars(substr((string) ($r['fecha_inicio'] ?? ''), 0, 10), ENT_QUOTES, 'UTF-8') ?></small></td>
-                <td class="d-none-mobile"><small><?= htmlspecialchars(substr((string) ($r['fecha_actualizacion'] ?? ''), 0, 10), ENT_QUOTES, 'UTF-8') ?></small></td>
+                <td class="d-none-mobile"><small><?= htmlspecialchars($fechaInicioVisible, ENT_QUOTES, 'UTF-8') ?></small></td>
+                <td class="d-none-mobile"><small><?= htmlspecialchars($fechaActualizacionVisible, ENT_QUOTES, 'UTF-8') ?></small></td>
               <td class="action-cell">
                 <div class="d-flex gap-1 flex-column flex-sm-row">
                   <a class="btn btn-sm btn-outline-secondary flex-grow-1" href="/index.php?view=registrar&edit_register_id=<?= (int) $r['id'] ?>">✏️ Editar</a>
